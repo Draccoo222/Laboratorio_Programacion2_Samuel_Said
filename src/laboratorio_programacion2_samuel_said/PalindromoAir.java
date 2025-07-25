@@ -5,7 +5,11 @@
 package laboratorio_programacion2_samuel_said;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import static java.lang.Character.getName;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -58,15 +62,32 @@ public class PalindromoAir {
         return isPalindromo(s.substring(1, s.length() - 1));
     }
 
-    public void printPassengers(int index) {
-        if (index >= asientos.length) {
-            return;
+    public void printPassengers() {
+    StringBuilder mensaje = new StringBuilder();
+
+    for (int i = 0; i < asientos.length; i++) {
+        if (asientos[i] != null) {
+            mensaje.append("Nombre:           ").append(asientos[i].getName(""))
+                   .append("\nMonto original:   $").append(String.format("%.2f", asientos[i].getOriginalAmount()))
+                   .append("\nMonto final:      $").append(String.format("%.2f", asientos[i].getFinalAmount()))
+                   .append("\nDescuento aplicado: ").append(asientos[i].isPalindrome() ? "Sí (10%)" : "No")
+                   .append("\n-----------------------------\n");
         }
-        if (asientos[index] != null) {
-            asientos[index].print();
-        }
-        printPassengers(index + 1);
     }
+
+    JTextArea textArea = new JTextArea(mensaje.toString());
+    textArea.setEditable(false);
+    JScrollPane scrollPane = new JScrollPane(textArea);
+    scrollPane.setPreferredSize(new Dimension(400, 300));
+
+    JOptionPane.showMessageDialog(
+            null,
+            scrollPane,
+            "Detalle de todos los Tickets",
+            JOptionPane.INFORMATION_MESSAGE
+    );
+}
+
 
     public double income(int index) {
         if (index >= asientos.length) {
@@ -149,30 +170,29 @@ public class PalindromoAir {
     }
 
     public boolean cancelTicket(String name) {
-    int pos = searchPassenger(name, 0);
-    if (pos == -1) {
+        int pos = searchPassenger(name, 0);
+        if (pos == -1) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Pasajero no encontrado",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return false;
+        }
+        asientos[pos] = null;
+
+        tabla.asientosVisuales[pos].setBackground(Color.GREEN);
+        tabla.asientosVisuales[pos].repaint();
+
         JOptionPane.showMessageDialog(
-            null,
-            "Pasajero no encontrado",
-            "Error",
-            JOptionPane.ERROR_MESSAGE
+                null,
+                "Ticket cancelado. Asiento " + (pos + 1) + " liberado",
+                "Cancelación exitosa",
+                JOptionPane.INFORMATION_MESSAGE
         );
-        return false;
+        return true;
     }
-    asientos[pos] = null;
-
-    tabla.asientosVisuales[pos].setBackground(Color.GREEN);
-    tabla.asientosVisuales[pos].repaint();
-
-    JOptionPane.showMessageDialog(
-        null,
-        "Ticket cancelado. Asiento " + (pos + 1) + " liberado",
-        "Cancelación exitosa",
-        JOptionPane.INFORMATION_MESSAGE
-    );
-    return true;
-}
-
 
     public void dispatch() {
         double total = income(0);

@@ -77,7 +77,7 @@ public class main extends JFrame {
             aeropuerto.dispatch();
         });
         printP.addActionListener(e -> {
-            aeropuerto.printPassengers(0);
+            aeropuerto.printPassengers();
         });
         income.addActionListener(e -> {
             double total = aeropuerto.income(0);
