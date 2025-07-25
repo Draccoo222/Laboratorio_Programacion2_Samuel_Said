@@ -10,36 +10,23 @@ import java.awt.*;
  * @author unwir
  */
 public class tablaBotones extends JPanel{
-    botonsito[] aseintosVisuales = new botonsito[30];
+    botonsito[] asientosVisuales = new botonsito[30];
   
-    public tablaBotones(){
-        
-        setLayout(new GridLayout(6, 5));
-        
-        
-        for (int i = 0; i < 30; i++) {
-            botonsito b = new botonsito("Asiento " + i);
-            aseintosVisuales[i] = b;
-            b.setBackground(Color.green);
-            int indice = i;
-            b.setSize(100, 100);
-            b.addActionListener(e -> {
-            
-            
-            
-            });
-            
-            
-            add(b);
-        }
-        
+    public tablaBotones() {
+    setLayout(new GridLayout(5,6,5,5));
+    asientosVisuales = new botonsito[30];
+    for (int i = 0; i < asientosVisuales.length; i++) {
+      botonsito b = new botonsito("Asiento " + (i+1));
+      b.setOpaque(true);
+      b.setContentAreaFilled(true);
+      b.setBackground(Color.GREEN);   
+      asientosVisuales[i] = b;
+      add(b);
     }
-    
-    public static void main (String[] args){
-        tablaBotones tb = new tablaBotones();
-        tb.setVisible(true);
-     
-    
-    }
-    
+  }
+    public void setColorAsiento(int idx, Color c) {
+    asientosVisuales[idx].setBackground(c);
+    asientosVisuales[idx].repaint();
+  }
+
 }

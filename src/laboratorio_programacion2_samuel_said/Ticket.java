@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
  * @author unwir
  */
 public class Ticket {
+    tablaBotones tabla = new tablaBotones();
+    PalindromoAir PalA = new PalindromoAir(tabla);
     private String nomPasajero;
     private double montoFinal ;
     private double montoOg = 1500;
@@ -34,7 +36,7 @@ public class Ticket {
     }
     
     public boolean isPalindrome(){
-   return new PalindromoAir().isPalindromo(nomPasajero);
+   return PalA.isPalindromo(nomPasajero);
     }
     
     public double costoTicket(double montoOg){
