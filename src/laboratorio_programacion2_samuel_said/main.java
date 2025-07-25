@@ -14,7 +14,8 @@ public class main extends JFrame{
     
     public main(){
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+        setSize(500, 500);
+        setLayout(new FlowLayout());
         JLabel a = new JLabel();
         a.setText("HOLA MUNDO");
         
