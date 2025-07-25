@@ -149,25 +149,30 @@ public class PalindromoAir {
     }
 
     public boolean cancelTicket(String name) {
-        int pos = searchPassenger(name, 0);
-        if (pos == -1) {
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Pasajero no encontrado",
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE
-            );
-            return false;
-        }
-        asientos[pos] = null;
+    int pos = searchPassenger(name, 0);
+    if (pos == -1) {
         JOptionPane.showMessageDialog(
-                null,
-                "Ticket cancelado. Asiento " + (pos + 1) + " liberado",
-                "Cancelacion exitosa",
-                JOptionPane.INFORMATION_MESSAGE
+            null,
+            "Pasajero no encontrado",
+            "Error",
+            JOptionPane.ERROR_MESSAGE
         );
-        return true;
+        return false;
     }
+    asientos[pos] = null;
+
+    tabla.asientosVisuales[pos].setBackground(Color.GREEN);
+    tabla.asientosVisuales[pos].repaint();
+
+    JOptionPane.showMessageDialog(
+        null,
+        "Ticket cancelado. Asiento " + (pos + 1) + " liberado",
+        "Cancelación exitosa",
+        JOptionPane.INFORMATION_MESSAGE
+    );
+    return true;
+}
+
 
     public void dispatch() {
         double total = income(0);

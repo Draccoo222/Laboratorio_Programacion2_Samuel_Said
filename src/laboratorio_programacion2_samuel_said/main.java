@@ -6,13 +6,17 @@ package laboratorio_programacion2_samuel_said;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
 
 /**
  *
  * @author unwir
  */
 public class main extends JFrame {
-tablaBotones ui = new tablaBotones();
+
+    tablaBotones ui = new tablaBotones();
     PalindromoAir aeropuerto = new PalindromoAir(ui);
     private JButton sellT = new JButton("Sell Ticket");
     private JButton cancelT = new JButton("Cancel Ticket");
@@ -21,31 +25,29 @@ tablaBotones ui = new tablaBotones();
     private JButton income = new JButton("Income");
     private JButton searchPass = new JButton("Search Pass");
 
+
     public main() {
         components();
     }
 
     private void components() {
-        
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
         setSize(850, 600);
         setLayout(null);
         JLabel a = new JLabel();
-        
+
         JLabel info = new JLabel();
         JLabel info2 = new JLabel();
         JLabel info3 = new JLabel();
-        
-        
+
         info.setBounds(550 + 70, 440, 200, 50);
         info2.setBounds(550 + 70, 460, 200, 50);
         info3.setBounds(550 + 70, 480, 200, 50);
         info.setText("Rojo: OCUPADO");
         info2.setText("Verde: DISPONIBLE");
         info3.setText("Dorado: OCUPADO, DESCUENTO");
-        
-        
+
         a.setBounds(270, 0, 300, 50);
         a.setText("PALINDROME AIRLINES");
         a.setFont(new Font("Arial Black", Font.BOLD, 20));
