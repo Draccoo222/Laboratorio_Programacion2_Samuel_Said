@@ -28,21 +28,36 @@ tablaBotones ui = new tablaBotones();
     private void components() {
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(800, 600);
+        setLocationRelativeTo(null);
+        setSize(850, 600);
         setLayout(null);
         JLabel a = new JLabel();
+        
+        JLabel info = new JLabel();
+        JLabel info2 = new JLabel();
+        JLabel info3 = new JLabel();
+        
+        
+        info.setBounds(550 + 70, 440, 200, 50);
+        info2.setBounds(550 + 70, 460, 200, 50);
+        info3.setBounds(550 + 70, 480, 200, 50);
+        info.setText("Rojo: OCUPADO");
+        info2.setText("Verde: DISPONIBLE");
+        info3.setText("Dorado: OCUPADO, DESCUENTO");
+        
+        
         a.setBounds(270, 0, 300, 50);
         a.setText("PALINDROME AIRLINES");
         a.setFont(new Font("Arial Black", Font.BOLD, 20));
 
         ui.setBounds(10, 55, 600, 500);
 
-        sellT.setBounds(550 + 65, 60 + 35, 150, 40);
-        cancelT.setBounds(550 + 65, 120 + 35, 150, 40);
-        dispatch.setBounds(550 + 65, 180 + 35, 150, 40);
-        printP.setBounds(550 + 65, 240 + 35, 150, 40);
-        income.setBounds(550 + 65, 300 + 35, 150, 40);
-        searchPass.setBounds(550 + 65, 360 + 35, 150, 40);
+        sellT.setBounds(550 + 70, 60 + 35, 150, 40);
+        cancelT.setBounds(550 + 70, 120 + 35, 150, 40);
+        dispatch.setBounds(550 + 70, 180 + 35, 150, 40);
+        printP.setBounds(550 + 70, 240 + 35, 150, 40);
+        income.setBounds(550 + 70, 300 + 35, 150, 40);
+        searchPass.setBounds(550 + 70, 360 + 35, 150, 40);
 
         sellT.addActionListener(e -> {
             String nombre = JOptionPane.showInputDialog("Ingrese nombre del pasajero:");
@@ -94,6 +109,9 @@ tablaBotones ui = new tablaBotones();
         });
 
         add(a);
+        add(info);
+        add(info2);
+        add(info3);
         add(ui);
         add(sellT);
         add(cancelT);
