@@ -4,18 +4,21 @@
  */
 package laboratorio_programacion2_samuel_said;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author unwir
  */
 public class Ticket {
     private String nomPasajero;
-    private double monto = 0;
+    private double montoFinal ;
     private double montoOg = 1500;
-    private boolean esPalindromo;
     
     public Ticket(String nomPasajero, double monto){
-    
+    this.nomPasajero = nomPasajero;
+    this.montoFinal = costoTicket(montoOg);
+    this.montoOg = montoOg;
     }
     
     public String getName(String name){
@@ -23,7 +26,7 @@ public class Ticket {
     }
     
     public double getFinalAmount(){
-    return monto;
+    return montoFinal;
     }
     
     public double getOriginalAmount(){
@@ -44,13 +47,23 @@ public class Ticket {
     
     public double costoTicket(double montoOg){
     if(isPalindrome()){
-        monto = montoOg - (montoOg*0.10);
-        return monto;
+        montoFinal = montoOg - (montoOg*0.10);
+        return montoFinal;
     }
     return montoOg;
     }
             
     public void print(){
-    
+     String mensaje =
+            "Nombre:           " + getName(nomPasajero) +
+          "\nMonto original:   $" + String.format("%.2f", getOriginalAmount()) +
+          "\nMonto final:      $" + String.format("%.2f", getFinalAmount()) +
+          "\nDescuento aplicado: " + (isPalindrome() ? "Sí (10%)" : "No");
+        JOptionPane.showMessageDialog(
+            null,
+            mensaje,
+            "Detalle del Ticket",
+            JOptionPane.INFORMATION_MESSAGE
+        );
     }
 }
