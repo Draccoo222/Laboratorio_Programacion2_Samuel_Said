@@ -15,12 +15,12 @@ public class Ticket {
     private double montoFinal ;
     private double montoOg = 1500;
     
-    public Ticket(String nomPasajero, double monto){
+    public Ticket(String nomPasajero, double montoOg){
     this.nomPasajero = nomPasajero;
     this.montoFinal = costoTicket(montoOg);
     this.montoOg = montoOg;
     }
-    
+
     public String getName(String name){
        return nomPasajero;
     }
@@ -34,15 +34,7 @@ public class Ticket {
     }
     
     public boolean isPalindrome(){
-    String nombre = nomPasajero.toLowerCase();
-    int length = nomPasajero.length();
-    
-        for (int i = 0; i < length; i++) {
-            if(nombre.charAt(i)!= nombre.charAt(length - 1 - i)){
-            return false;
-            }
-        }     
-        return true;
+   return new PalindromoAir().isPalindromo(nomPasajero);
     }
     
     public double costoTicket(double montoOg){
